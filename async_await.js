@@ -1,43 +1,34 @@
-// 
+// Async Await
 
 const createRocket = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('Rocket Created')
-      resolve()
-    }, 4000)
-  }) 
-}
-
+      resolve("Rocket Created");
+    }, 4000);
+  });
+};
 
 const trainAstronauts = () => {
   return new Promise((resolve, reject) => {
-    if (true) {
-      reject('Something went wrong with the astronauts')
-    } else {
-      setTimeout(() => {
-        console.log('Astronauts Trained')
-        resolve()
-      }, 2000)
-    }
-  })
-}
+    setTimeout(() => {
+      resolve("Astronauts Trained");
+    }, 2000);
+  });
+};
 
 const calculateTrajectory = () => {
   return new Promise((resolve, reject) => {
-    console.log('Calculated TraYectory')
-    resolve();
+    resolve("Calculated TraYectory");
   });
-}
+};
 
 const goingToMars = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('Arrive to Mars')
-      resolve();
-    }, 2000)
-  })
-}
+      resolve("Arrive to Mars");
+    }, 2000);
+  });
+};
 
 // let createRocket = new Promise((resolve, reject) => {
 //   resolve('Rocket created')
@@ -49,13 +40,24 @@ const goingToMars = () => {
 
 const missionToMars = async () => {
   try {
-    await createRocket();
-    await trainAstronauts();
-    await calculateTrajectory();
-    await goingToMars();
+
+    // promiseCook()
+    //  .then(val => console.log(val))
+    const created = await createRocket();
+    console.log(created);
+    
+    const trained = await trainAstronauts();
+    console.log(trained);
+
+    const calculated = await calculateTrajectory();
+    console.log(calculated);
+
+    const travelling = await goingToMars();
+    console.log(travelling);
+    
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 missionToMars();
