@@ -27,4 +27,5 @@ const bakeInOven = () => {
 Promise.all([makeDough(), addIngredients(), bakeInOven()])
   .then(() => {
     console.log('Finished all tasks');
-  });
+  })
+  .catch(err => console.log(err));
