@@ -13,7 +13,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // routes
-app.use('/dog', require('./routes/hero'));
+app.use('/heros', require('./routes/hero'));
+app.use('/villains', require('./routes/villain'));
 
 const port = 5000; // google takeshi
 app.listen(port, () => {
