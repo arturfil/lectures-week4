@@ -17,15 +17,18 @@ app.use(express.json());
 // routes
 // GET All
 app.get('/', (req, res) => {
-  const result = Hero.find();
-  res.json({data: result});
-  // res.end();
-  // res.json({message: "Andriw hates cats"});
+  Hero.find()
+    .then(heroes => {
+      return res.json(heroes)
+    })
 });
 
 // GET Single Hero
 app.get('/hero/:id', (req, res) => {
-  console.log('Single hero')
+  Hero.findById(req.params.id)
+    .then(hero => {
+      return res.json(hero)
+    })
 })
 
 
@@ -43,10 +46,11 @@ app.post('/hero', (req, res) => {
       age: req.body.age
     }
   );
+
   newHero.save()
     .then((val) => {
       console.log(val)
-      return res.json({result: val})
+      return res.status(201).json(val);
     })
     .catch(err => {
       return res.json({error: err})
@@ -56,14 +60,22 @@ app.post('/hero', (req, res) => {
 
 // PUT (update) Single Hero
 app.put('/hero/:id', (req, res) => {
-  console.log('Upating Hero')
-  const heroToUpdate = Hero.findById()
-
+  Hero.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
+    .then(data => {
+      return res.json(data)
+    })
 });
 
 // DELTE Single Hero
 app.delete('/hero/:id', (req, res) => {
   console.log('Deleting a Hero')
+  Hero.findByIdAndDelete(req.params.id)
+    .then(data => {
+      return res.status(200).json({message:'Hero deleted succesfully'})
+    })
+    .catch(err => {
+      return res.json({message: `Hero couldn't be deleted ${err}`})
+    })
 })
 
 const port = 5000; // google takeshi
