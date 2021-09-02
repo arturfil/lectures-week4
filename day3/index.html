@@ -1,0 +1,421 @@
+<section id="Learning-goals"><h2 class="raw">Learning goals</h2>
+  <p>After this lesson, you will be able to:</p>
+  <ul>
+  <li class="raw">Describe what JS frameworks and libraries are and why we use them</li>
+  <li class="raw">Explain what React is and what are its main features</li>
+  <li class="raw">Explain what components are and how they simplify the creation of User interfaces</li>
+  <li class="raw">Create and render React components</li>
+  </ul>
+  <p></p>
+  </section><section id="Introduction"><h2 class="raw">Introduction</h2>
+  <p>In today’s web development, there are many ways to create user interfaces. These can be simple Static Websites, <a href="https://lvivity.com/single-page-app-vs-multi-page-app#:~:text=A%20Multi%2Dpage%20Application%20is,page%20displayed%20in%20the%20browser." target="_blank" rel="noopener noreferrer">Multi-page Applications</a> (server-side rendered), <a href="https://web.dev/what-are-pwas/" target="_blank" rel="noopener noreferrer">Progressive Web Apps (PWA)</a>, <a href="https://developer.mozilla.org/en-US/docs/Glossary/SPA" target="_blank" rel="noopener noreferrer">Single-page Applications</a>, etc.</p>
+  <p>The simplest way to create a front-end application is using plain HTML, CSS, and JavaScript. This is the purest way of doing web development. It doesn’t require the use of tools, libraries or frameworks.</p>
+  <p>However, this approach doesn’t scale very well when creating large web applications.</p>
+  <p>As applications grow, they tend to become hard to maintain and scale. Think about a web platform such as Facebook, Airbnb, or Instagram. How many HTML, CSS, and JS files do we need to create one such application? The answer is thousands of files. Fun fact: <strong>Facebook’s</strong> frontend runs on over 60 million lines of <strong>code</strong> <img class="emoji" alt=":scream:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/scream.png">. You get the picture!</p>
+  <p>As an application grows, it may start encountering architecture problems such as:</p>
+  <ul>
+  <li class="raw">code and files being very hard to organize (too much code),</li>
+  <li class="raw">it becomes hard to interconnect or reuse logic and code across files and features,</li>
+  <li class="raw">It is hard to enforce specific design patterns and structure</li>
+  </ul>
+  <p>When these things happen, a framework can come to help. <img class="emoji" alt=":star:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/star.png"></p>
+  <p></p>
+  </section><section id="Frameworks-and-Code-Libraries"><h2 class="raw">Frameworks and Code Libraries</h2>
+  <!--
+  
+  &gt;  *Understand what JS frameworks (and libraries) are and why we need them,*
+  &gt;
+  &gt; Micro goals
+  &gt;
+  &gt; - Understand what a software framework is
+  &gt; - Understand what a front-end framework is
+  &gt; - Draw parallel to another JavaScript framework
+  &gt; - Understand what a code library is
+  
+  -->
+  <p><strong>A software framework is:</strong></p>
+  <blockquote class="raw">
+  <p>A universal, reusable software environment used to facilitate the development of software applications, products, and solutions.</p>
+  </blockquote>
+  <p>A framework serves as a development environment and a set of tools and commonly includes:</p>
+  <ul>
+  <li class="raw">Support programs,</li>
+  <li class="raw">Compilers/transpilers,</li>
+  <li class="raw">Code libraries (also called packages),</li>
+  <li class="raw">Toolsets,</li>
+  <li class="raw">Predefined structure of the application (folder/file structure and configuration)</li>
+  <li class="raw">Enforced set of rules and well-tested design principles that must be followed</li>
+  </ul>
+  <p>A <strong>JavaScript framework</strong> is an application framework based on JavaScript.</p>
+  <p><em>Framework</em> helps you to build apps faster by addressing common development issues. You may know some other frameworks, like <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer">Express</a>. In this module, we will use React frontend framework to create client-side applications.</p>
+  <p></p>
+  <h3 class="raw" id="Front-end-Frameworks">Front-end Frameworks</h3>
+  <p>A <em>front-end framework</em> consists of tools, JavaScript libraries, and packages. Front-end frameworks help developers build and scale front-end applications easier and faster.</p>
+  <p></p>
+  <p><strong>A code library is:</strong></p>
+  <blockquote class="raw">
+  <p>A collection of objects, functions, and methods which can be reused and shared among multiple applications. A library performs specific, well-defined operations.</p>
+  <p><cite>– [Kolev (2017, July 31). <em>The pros and cons of using a framework</em>][<a href="https://jaxenter.com/pros-cons-using-framework-135901.html" target="_blank" rel="noopener noreferrer">https://jaxenter.com/pros-cons-using-framework-135901.html</a>] </cite></p>
+  </blockquote>
+  <p>In other words, <strong>code libraries</strong> are collections of ready-to-use code used to speed up the creation of programs.</p>
+  <p>When it comes to React, there are still many divided opinions on the question, “Is React a <em>library</em> or is it a <em>framework</em>?”. React takes the best of both, and it isn’t easy to draw the line and decide in favor of one or the other.</p>
+  <p>We already mentioned some of the key features of frameworks, so let’s list some of the main ones of libraries:</p>
+  <ul>
+  <li class="raw">A library provides a set of functions/methods/events that developers can use to achieve wanted behavior.</li>
+  <li class="raw">We can combine a library with other libraries. That’s not the case with frameworks. It’s almost impossible to have two frameworks combined on the same app.</li>
+  <li class="raw">Using a library gives more freedom to developers and allows for faster development, but that also means more responsibility for the design of the whole system and app flow as the use of external code carries risk.</li>
+  </ul>
+  <p></p>
+  <h4 class="raw"><img class="emoji" alt=":pencil2:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/pencil2.png"> Test Your Knowledge: Quiz</h4>
+  <p></p>
+  <ol>
+  <li class="raw">What is a software framework?</li>
+  <li class="raw">What problems does the software framework help solve?</li>
+  <li class="raw">What is a code library?</li>
+  </ol>
+  <p></p>
+  <p></p><details style="font-size: 14px; cursor: pointer; outline: none; color: #575d70;"> <summary>Answers:</summary> <br><ol>
+  <li class="raw">
+  <p>A software framework is a development environment and a set of tools used to facilitate the faster development of software. It usually includes support programs, code libraries and a predefined code structure. Besides this software framework enforces the use of well-tested design principles.</p>
+  </li>
+  <li class="raw">
+  <p>As applications grow, they tend to become hard to maintain and scale. Frameworks solve these problems by providing a uniform project structure, enforcing best practices, and automating common tasks.</p>
+  </li>
+  <li class="raw">
+  <p>A Code library is a collection of pre-written code. It may contain objects, functions, and methods which can be reused and shared among many applications. Code libraries are used to speed up the creation of programs.</p>
+  </li>
+  </ol></details> <p></p>
+  <p></p>
+  </section><section id="Introduction-to-React"><h2 class="raw">Introduction to React</h2>
+  <!--
+  
+  &gt; Understand what React is and what are its main features
+  &gt;
+  &gt; Micro goals:
+  &gt;
+  &gt; - Explain what React is. Provide official definition, Official documentation page, about React, background.
+  &gt; - List out and explain React features
+  &gt; - List advantages of using React
+  &gt; - Brief explanation of React toolchain
+  
+  -->
+  <p><strong>What is React?</strong></p>
+  <p>React is a <strong>front-end JavaScript library</strong> used to create front-end applications that run in the browser. It was created by <a href="https://www.reactiflux.com/transcripts/jordan-walke/" target="_blank" rel="noopener noreferrer">Jordan Walke</a>, a software engineer working for Facebook. React first deployed on <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook’s</a> newsfeed in 2011 and on <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram.com</a> in 2012.</p>
+  <p>React allows developers to create robust web applications that handle dynamic changes in the data without reloading the page. Besides Web apps, we can also use React for developing Android and iOS mobile apps. This is done through the cross-platform framework called React Native.</p>
+  <p></p>
+  <h3 class="raw" id="React-Features">React Features</h3>
+  <p>Let’s take a closer look at some essential features of React:</p>
+  <ul>
+  <li class="raw">
+  <p><strong>Declarative</strong> - React makes it painless to create interactive UIs. Declarative views make your code more predictable and easier to debug.</p>
+  </li>
+  <li class="raw">
+  <p><strong>Component-Based</strong> - Components are building blocks of React applications. We can compose React components to make complex UIs. Additionally, each component can have encapsulated state.</p>
+  </li>
+  <li class="raw">
+  <p><strong>JSX</strong> - <a href="https://reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener noreferrer">JSX</a> is a JavaScript syntax extension used to write HTML and JavaScript together. Instead of separating JavaScript and HTML into different files, React uses JSX to combine HTML and JS together. JSX speeds up and simplifies the creation of React apps and components. Don’t worry; we will take a further look into this in the next steps! <img class="emoji" alt=":wink:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/wink.png"></p>
+  </li>
+  <li class="raw">
+  <p><strong>Learn Once, Write Anywhere</strong> - React can be used to pre-render web pages on the server with Node. Besides Web apps, we can use React to create mobile apps with <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a>.</p>
+  </li>
+  </ul>
+  <div class="alert alert-info">
+  <p><img class="emoji" alt=":bulb:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/bulb.png"> While JSX is the recommended way for creating React apps, it is not the only one. We can also create React apps using pure old JavaScript!</p>
+  </div>
+  <p></p>
+  <h3 class="raw" id="Advantages-of-React">Advantages of React</h3>
+  <ul>
+  <li class="raw">
+  <p><strong>Component-based development</strong> - Components are smaller reusable pieces of UI. We create React applications using components. This allows us to build complex applications.</p>
+  </li>
+  <li class="raw">
+  <p><strong>Separation of concerns</strong> - React enables a clean, modular design of the applications, thanks to components. Developers can work on different parts of the application, on a specific component. This way they don’t interfere with the work of others or breaking the existing code.</p>
+  </li>
+  <li class="raw">
+  <p><strong>Speed</strong> - React enables us to maintain a clear project structure. Clear structure speeds up the development.</p>
+  </li>
+  <li class="raw">
+  <p><strong>Enforces Structure</strong> - React enforces certain design patterns and project structure. If all developers in the team follow the same practices, collaboration improves.</p>
+  </li>
+  <li class="raw">
+  <p><strong>Initial setup</strong> - React tooling provides a boilerplate code to make it easier for you to get your app up and running.</p>
+  </li>
+  </ul>
+  <p></p>
+  <h4 class="raw"><img class="emoji" alt=":pencil2:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/pencil2.png"> Test Your Knowledge: Quiz</h4>
+  <ol>
+  <li class="raw">What is React?</li>
+  <li class="raw">Is React a frontend or backend library?</li>
+  <li class="raw">What is JSX?</li>
+  <li class="raw">What is the meaning of Component-based development?</li>
+  </ol>
+  <p></p>
+  <p></p><details style="font-size: 14px; cursor: pointer; outline: none; color: #575d70;"> <summary>Answers:</summary><ol>
+  <li class="raw">React is a front-end JavaScript library used to create front-end applications that run in the browser.</li>
+  <li class="raw">React is a front-end library. It can also be used to create Android and iOS mobile apps using React Native.</li>
+  <li class="raw">JSX is a JavaScript syntax extension used to write HTML and JavaScript together. Instead of separating JavaScript and HTML into different files, React uses JSX to combine HTML and JS together.</li>
+  <li class="raw">In Component-based development, the entire application is created out of smaller reusable pieces of UI, called <em>components</em>. Components are the main building blocks.</li>
+  </ol></details> <p></p>
+  <p></p>
+  </section><section id="Basic-React-Application"><h2 class="raw">Basic React Application</h2>
+  <!--
+  
+  &gt; Run an existing React application
+  &gt;
+  &gt; Micro goals:
+  &gt;
+  &gt; - Introduce the environment of the example.
+  &gt; - Present a simple React app constructed out of components, allowing for students to easily visually distinguish between different components.
+  &gt; - Run an existing react application
+  &gt; - Allow the students to easily update the existing component and reuse a component by copy-pasting.
+  
+  -->
+  <p>Let’s get started. We want to keep it simple for the moment. Instead of creating the React app from scratch, we’ll open an existing React app using the <a href="https://codesandbox.io/" target="_blank" rel="noopener noreferrer">CodeSandbox</a> platform.</p>
+  <p>CodeSandbox is an online editor similar to Codepen. It allows you to write your code in the online editor, that looks exactly the same as VSCode, and share it easily.</p>
+  <p>We’ll use the following <em>CodeSandbox example</em> - <a href="https://codesandbox.io/s/m3-d1-react-introduction-ielbx?file=/src/App.js" target="_blank" rel="noopener noreferrer">React introduction</a>:</p>
+  <p><iframe src="https://codesandbox.io/embed/m3-d1-react-introduction-ielbx?fontsize=14&amp;hidenavigation=1&amp;theme=light" style="width: 100%; height: 500px; border: 0; border-radius: 4px; overflow: hidden;"></iframe> </p>
+  <p>The above React app is a simple landing page containing several components.</p>
+  <p>Function <code>App</code> is the initial component that is always created first in React apps and serves as a parent for all other content and React components.</p>
+  <div class="alert alert-info">
+  <p><img class="emoji" alt=":point_up:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/point_up.png"> The main file <code>App.js</code> is called a <strong>root component</strong>, and it represents the root of the React application that is rendered in the DOM.</p>
+  </div>
+  <p></p>
+  <h4 class="raw">Component-based</h4>
+  <p><code>App.js</code> is a React component. A React component holds UI, logic, and data, all in one place. You will notice in the example that <code>App.js</code> contains a code that is a mix of JavaScript and HTML, all in the same file!</p>
+  <p><strong>Wondering how that’s even possible?</strong> Well, this is possible thanks to JSX. JSX allows us to put <em>HTML</em>, <em>JavaScript logic</em>, and <em>data</em> together in the same file. We will cover JSX in detail in a later lesson.</p>
+  <p>Component-based development brings the following benefits:</p>
+  <ul>
+  <li class="raw">
+  <p>Code is reusable.</p>
+  </li>
+  <li class="raw">
+  <p>We can quickly duplicate the Components and move them around.</p>
+  </li>
+  <li class="raw">
+  <p>To update a part of the app, we update a single component without touching the rest of the application.</p>
+  </li>
+  </ul>
+  <p>To better understand the structure of the above app and the components, take a look at the below image:</p>
+  <p><img src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/code-examples/react-intro-hello-react-components.png" alt="img" class="raw md-image"></p>
+  <p></p>
+  <p>As you can see, it is easy to understand the structure of the page. Each part of the page is represented by a component. Nice and tidy, isn’t it?</p>
+  <p>You must be wondering, how do we create a component? That’s what we will do next!</p>
+  <p></p>
+  </section><section id="Creating-a-React-component"><h2 class="raw">Creating a React component</h2>
+  <!--
+  
+  &gt; Create and render your first React component
+  &gt;
+  &gt; Micro goals:
+  &gt;
+  &gt; - Run an existing react application
+  &gt; - Create a simple React component by following the provided examples
+  &gt; - Learn how to `export` and `import` a component
+  &gt; - Become familiar with the function component syntax
+  &gt; - Practice syntax and create new components by using the provided HTML content and guide examples
+  
+   -->
+  <p>You saw how components make it easy to organize the code in an application. You are now probably eager to create your first component. So, let’s create a React component.</p>
+  <p>We will continue working on the previous <em>CodeSandbox example</em> - <a href="https://codesandbox.io/s/m3-d1-react-introduction-ielbx?file=/src/App.js" target="_blank" rel="noopener noreferrer">React introduction</a>. We will work on the file <code>src/components/MyButton.js</code>. If you open the file, you will find the following code:</p>
+  <pre><div id="copy-code-snippet-0"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="// src/components/MyButton.js
+  
+  function MyButton() {
+    return ( /* HTML &amp; JSX CONTENT */ );
+  }
+  
+  export default MyButton;
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment">// src/components/MyButton.js</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyButton</span>(<span class="hljs-params"></span>) </span>{</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4">  <span class="hljs-keyword">return</span> ( <span class="hljs-comment">/* HTML &amp; JSX CONTENT */</span> );</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5">}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="7"><div class="hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="7"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyButton;</td></tr></tbody></table></code></pre>
+  <p>The only thing that we need to add is the content to be displayed. In a nutshell, a component is a function that returns JSX content.</p>
+  <p>Now, take a moment and go over the other components inside of the <code>/src/components</code> folder. Take a look at the components <code>Headline.js</code> and <code>Button.js</code>. As you can see, they are very similar. Each component is a function that returns some JSX content.</p>
+  <div class="alert alert-info">
+  <p><img class="emoji" alt=":bulb:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/bulb.png"> A React component is just a function that returns JSX content or other components.</p>
+  </div>
+  <p>So, to make the above <code>MyButton</code> component render some content, we need to <em>return</em> the HTML content from the function.</p>
+  <p>Update the <code>MyButton.js</code> file and add the following HTML content in the <code>return</code> parentheses:</p>
+  <pre><div id="copy-code-snippet-1"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="// src/components/MyButton.js
+  
+  <a href=&quot;https://ironhack.com&quot;>
+    <button className=&quot;btn yellow&quot;>MY BUTTON</button>
+  </a>
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment">// src/components/MyButton.js</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3">&lt;a href=<span class="hljs-string">"https://ironhack.com"</span>&gt;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4">  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn yellow"</span>&gt;</span>MY BUTTON<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5">&lt;<span class="hljs-regexp">/a&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6"></td></tr></tbody></table></code></pre>
+  <p>After updating the file, your code should look this:</p>
+  <pre><div id="copy-code-snippet-2"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="// src/components/MyButton.js
+  
+  function MyButton() {
+    return (
+      <a href=&quot;https://ironhack.com&quot;>
+        <button className=&quot;btn yellow&quot;>REACT DOCS</button>
+      </a>
+    );
+  }
+  
+  // To make the component available we have to export it
+  export default MyButton;
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment">// src/components/MyButton.js</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyButton</span>(<span class="hljs-params"></span>) </span>{</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4">  <span class="hljs-keyword">return</span> (</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5">    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://ironhack.com"</span>&gt;</span></span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn yellow"</span>&gt;</span>REACT DOCS<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="7"><div class="hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="7">    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="8"><div class="hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="8">  );</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="9"><div class="hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="9">}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="10"><div class="hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="10"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="11"><div class="hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="11"><span class="hljs-comment">// To make the component available we have to export it</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="12"><div class="hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="12"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyButton;</td></tr></tbody></table></code></pre>
+  <div class="alert alert-success">
+  <p><img class="emoji" alt=":muscle:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/muscle.png"> <strong>Practice makes perfect.</strong> To enforce what you just learned, you should try to create a component from scratch. Go on and delete the existing code from the <code>MyButton.js</code> and recreate the component, this time from scratch.</p>
+  </div>
+  <p></p>
+  <h3 class="raw" id="Export-a-component">Export a component</h3>
+  <p>As you may have noticed, there is an <strong><code>export default</code></strong> statement at the bottom of the file. We need this statement to make the component available for <code>import</code> from other files. This means that you must include the <code>export default</code> statement in every component. Otherwise, the component won’t be accessible for import, and React will throw an error.</p>
+  <p>React supports the latest JavaScript syntax and uses the <code>import</code> and <code>export</code> statements for importing and exporting code from files. This syntax is also known as <a href="https://exploringjs.com/es6/ch_modules.html" target="_blank" rel="noopener noreferrer">ES modules</a>.</p>
+  <p>The ES modules statement:</p>
+  <pre><div id="copy-code-snippet-3"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="export default ComponentName;
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ComponentName;</td></tr></tbody></table></code></pre>
+  <p>Is equivalent to Node’s:</p>
+  <pre><div id="copy-code-snippet-4"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="module.exports = ComponentName;
+  ">Copy</button></div><code class="js hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-built_in">module</span>.exports = ComponentName;</td></tr></tbody></table></code></pre>
+  <div class="alert alert-warning">
+  <p><img class="emoji" alt=":package:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/package.png"> In React, we use ES modules import and export statement to import and export components.</p>
+  </div>
+  <p></p>
+  <h3 class="raw" id="Import-and-use-a-component">Import and use a component</h3>
+  <p>To start using <code>MyButton</code> component, we need to <code>import</code> it into the component where we want to display it.</p>
+  <p>To do this, open the <code>App.js</code> file and add the following <code>import</code> statement at the top of the file:</p>
+  <pre><div id="copy-code-snippet-5"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="// App.js
+  
+  import MyButton from './components/MyButton';
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment">// App.js</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-keyword">import</span> MyButton <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/MyButton'</span>;</td></tr></tbody></table></code></pre>
+  <p>Once you have imported the component, the next step is to render it inside the <code>App</code>. To do this add the new component <code>&lt;MyButton /&gt;</code> inside of the <code>return</code> of the <code>App</code> component:</p>
+  <pre><div id="copy-code-snippet-6"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="// App.js
+  
+  function App() {
+    return (
+      <div className=&quot;App&quot;>
+        <Navbar />
+        <Headline />
+  
+        <Button />
+        <CustomButton btnText=&quot;REACT NATIVE&quot; url=&quot;https://reactjs.org&quot; />
+        <CustomButton btnText=&quot;REDUX&quot; url=&quot;hhttps://redux.js.org/&quot; />
+  
+        <MyButton />
+  
+        <Gallery />
+      </div>
+    );
+  }
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment">// App.js</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4">  <span class="hljs-keyword">return</span> (</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5">    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span></span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6">      <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="7"><div class="hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="7">      <span class="hljs-tag">&lt;<span class="hljs-name">Headline</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="8"><div class="hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="8"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="9"><div class="hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="9">      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="10"><div class="hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="10">      <span class="hljs-tag">&lt;<span class="hljs-name">CustomButton</span> <span class="hljs-attr">btnText</span>=<span class="hljs-string">"REACT NATIVE"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"https://reactjs.org"</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="11"><div class="hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="11">      <span class="hljs-tag">&lt;<span class="hljs-name">CustomButton</span> <span class="hljs-attr">btnText</span>=<span class="hljs-string">"REDUX"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"hhttps://redux.js.org/"</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="12"><div class="hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="12"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="13"><div class="hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="13">      <span class="hljs-tag">&lt;<span class="hljs-name">MyButton</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="14"><div class="hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="14"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="15"><div class="hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="15">      <span class="hljs-tag">&lt;<span class="hljs-name">Gallery</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="16"><div class="hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="16">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="17"><div class="hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="17">  );</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="18"><div class="hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="18">}</td></tr></tbody></table></code></pre>
+  <p></p>
+  <p></p><details style="font-size: 14px; cursor: pointer; outline: none; color: #575d70;"> <summary>After updating the file, your code should look this (click to expand):</summary> <br>
+  <pre><div id="copy-code-snippet-7"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="// App.js
+  
+  import './styles.css';
+  // We import other components to be able to use them inside of this component
+  import Navbar from './components/Navbar';
+  import Button from './components/Button';
+  import CustomButton from './components/CustomButton';
+  import Headline from './components/Headline';
+  import Gallery from './components/Gallery';
+  import MyButton from './components/MyButton';
+  
+  // React Component <App />
+  
+  function App() {
+    return (
+      <div className=&quot;App&quot;>
+        <Navbar />
+        <Headline />
+  
+        <Button />
+        <CustomButton btnText=&quot;REACT NATIVE&quot; url=&quot;https://reactjs.org&quot; />
+        <CustomButton btnText=&quot;REDUX&quot; url=&quot;hhttps://redux.js.org/&quot; />
+  
+        <MyButton />
+  
+        <Gallery />
+      </div>
+    );
+  }
+  
+  // export default App;
+  module.exports = App;
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment">// App.js</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-keyword">import</span> <span class="hljs-string">'./styles.css'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4"><span class="hljs-comment">// We import other components to be able to use them inside of this component</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5"><span class="hljs-keyword">import</span> Navbar <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/Navbar'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6"><span class="hljs-keyword">import</span> Button <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/Button'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="7"><div class="hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="7"><span class="hljs-keyword">import</span> CustomButton <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/CustomButton'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="8"><div class="hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="8"><span class="hljs-keyword">import</span> Headline <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/Headline'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="9"><div class="hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="9"><span class="hljs-keyword">import</span> Gallery <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/Gallery'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="10"><div class="hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="10"><span class="hljs-keyword">import</span> MyButton <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/MyButton'</span>;</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="11"><div class="hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="11"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="12"><div class="hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="12"><span class="hljs-comment">// React Component &lt;App /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="13"><div class="hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="13"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="14"><div class="hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="14"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="15"><div class="hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="15">  <span class="hljs-keyword">return</span> (</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="16"><div class="hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="16">    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span></span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="17"><div class="hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="17">      <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="18"><div class="hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="18">      <span class="hljs-tag">&lt;<span class="hljs-name">Headline</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="19"><div class="hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="19"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="20"><div class="hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="20">      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="21"><div class="hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="21">      <span class="hljs-tag">&lt;<span class="hljs-name">CustomButton</span> <span class="hljs-attr">btnText</span>=<span class="hljs-string">"REACT NATIVE"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"https://reactjs.org"</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="22"><div class="hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="22">      <span class="hljs-tag">&lt;<span class="hljs-name">CustomButton</span> <span class="hljs-attr">btnText</span>=<span class="hljs-string">"REDUX"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"hhttps://redux.js.org/"</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="23"><div class="hljs-ln-n" data-line-number="23"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="23"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="24"><div class="hljs-ln-n" data-line-number="24"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="24">      <span class="hljs-tag">&lt;<span class="hljs-name">MyButton</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="25"><div class="hljs-ln-n" data-line-number="25"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="25"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="26"><div class="hljs-ln-n" data-line-number="26"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="26">      <span class="hljs-tag">&lt;<span class="hljs-name">Gallery</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="27"><div class="hljs-ln-n" data-line-number="27"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="27">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="28"><div class="hljs-ln-n" data-line-number="28"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="28">  );</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="29"><div class="hljs-ln-n" data-line-number="29"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="29">}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="30"><div class="hljs-ln-n" data-line-number="30"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="30"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="31"><div class="hljs-ln-n" data-line-number="31"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="31"><span class="hljs-comment">// export default App;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="32"><div class="hljs-ln-n" data-line-number="32"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="32"><span class="hljs-built_in">module</span>.exports = App;</td></tr></tbody></table></code></pre>
+  </details> <p></p>
+  <p></p>
+  <h4 class="raw"><img class="emoji" alt=":pencil2:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/pencil2.png"> Check for understanding - Create Components</h4>
+  <p></p>
+  <p></p><details style="font-size: 14px; cursor: pointer; outline: none; color: #575d70;"> <summary> Click for Instructions </summary> <br>
+  <p>Complete the below activity:</p>
+  <ul>
+  <li class="raw"><strong>1. Create a copy of the CodeSandbox app</strong></li>
+  </ul>
+  <p>Open the following React app: <a href="https://codesandbox.io/s/m3-d1-react-introduction-cfu1-5xhrh?file=/src/App.js" target="_blank" rel="noopener noreferrer">CodeSandbox - Exercise</a>. To start working you just need to start writing the code, upon first save (<kbd>CMD</kbd>+<kbd>Z</kbd> / <kbd>CTRL</kbd>+<kbd>Z</kbd>) CodeSandbox will automatically create a copy of the app for you with a new URL.</p>
+  <br>
+  <ul>
+  <li class="raw"><strong>2. Check the examples in the <code>Navbar</code> and <code>App</code> components</strong></li>
+  </ul>
+  <p>Before starting, take a look at the <code>Navbar</code> component (<code>/src/components/Navbar</code>). We left this component as an example for you; feel free to use it as a reference.</p>
+  <p>If you open <code>App.js</code> you will see that the component <code>Navbar</code> is already imported in the file:</p>
+  <pre><div id="copy-code-snippet-8"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="import Navbar from './components/Navbar'; // <== We import a component like this
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-keyword">import</span> Navbar <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/Navbar'</span>; <span class="hljs-comment">// &lt;== We import a component like this</span></td></tr></tbody></table></code></pre>
+  <p>and displayed in the <code>App</code> like this:</p>
+  <pre><div id="copy-code-snippet-9"><button title="" type="button" class="sc-jhGSUB cXyJId" data-clipboard-text="function App() {
+    return (
+      <div className=&quot;App&quot;>
+        <Navbar />
+  
+        {/*  <Headline /> */}
+  
+        {/* <ButtonBlue /> */}
+  
+        {/* <ButtonYellow /> */}
+  
+        {/* <Gallery /> */}
+      </div>
+    );
+  }
+  ">Copy</button></div><code class="jsx hljs raw javascript"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">  <span class="hljs-keyword">return</span> (</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3">    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"App"</span>&gt;</span></span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4">      <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span> /&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6">      {/*  <span class="hljs-tag">&lt;<span class="hljs-name">Headline</span> /&gt;</span> */}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="7"><div class="hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="7"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="8"><div class="hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="8">      {/* <span class="hljs-tag">&lt;<span class="hljs-name">ButtonBlue</span> /&gt;</span> */}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="9"><div class="hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="9"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="10"><div class="hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="10">      {/* <span class="hljs-tag">&lt;<span class="hljs-name">ButtonYellow</span> /&gt;</span> */}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="11"><div class="hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="11"> </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="12"><div class="hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="12">      {/* <span class="hljs-tag">&lt;<span class="hljs-name">Gallery</span> /&gt;</span> */}</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="13"><div class="hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="13">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="14"><div class="hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="14">  );</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="15"><div class="hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="15">}</td></tr></tbody></table></code></pre>
+  <br>
+  <ul>
+  <li class="raw"><strong>3. Create and display the components</strong></li>
+  </ul>
+  <p>Create the following components and display them in the <code>App</code> component:</p>
+  <ul>
+  <li class="raw"><code>Headline</code></li>
+  <li class="raw"><code>ButtonBlue</code></li>
+  <li class="raw"><code>ButtonYellow</code></li>
+  <li class="raw"><code>Gallery</code></li>
+  </ul>
+  <p>You can find the content for each component in the file <code>/content.html</code> that we provided for you.</p>
+  <p><strong>Note:</strong> Once you are done creating each component, remember to export the component from the file.</p>
+  <p>To display the newly created component, you will need to import it in the <code>App.js</code> and include it inside the <em>return</em> of the <code>App</code> (in the same way we did with <code>&lt;Navbar /&gt;</code> in the previous example, see above).</p>
+  <br>
+  <ul>
+  <li class="raw"><strong>4. Create and render the nested components</strong></li>
+  </ul>
+  <p>Next, create the following components and display them in the <code>Gallery</code> component:</p>
+  <ul>
+  <li class="raw"><code>ImageOne</code></li>
+  <li class="raw"><code>ImageTwo</code></li>
+  </ul>
+  <p>You can find the content for each component in the file <code>/content.html</code> that we provided for you.</p>
+  <p><strong>Note:</strong> Component <code>ImageOne</code> and <code>ImageTwo</code> should be displayed inside of the <code>Gallery</code> component. You can check the file <code>Gallery.js</code> from the previous CodeSandbox example <img class="emoji" alt=":point_right:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/point_right.png"> - <a href="https://codesandbox.io/s/m3-d1-react-introduction-ielbx?file=/src/components/Gallery.js" target="_blank" rel="noopener noreferrer">React Introduction</a>, as a guide on how to do this.</p>
+  <p><strong>Important:</strong> Once you are done creating each component remember to export the component from its file.</p>
+  <br>
+  <ul>
+  <li class="raw"><strong>5. (Bonus) Create a dynamic component <code>CustomButton</code></strong></li>
+  </ul>
+  <p>Create a dynamic component <code>CustomButton</code> by using the file <code>CustomButton.js</code> from previous CodeSandbox example <img class="emoji" alt=":point_right:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/point_right.png"> - <a href="https://codesandbox.io/s/m3-d1-react-introduction-ielbx?file=/src/components/CustomButton.js" target="_blank" rel="noopener noreferrer">React Introduction</a> as a guide.</p>
+  <br>
+  <p><img class="emoji" alt=":trophy:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/trophy.png"> <strong>Solution:</strong> <strong><a href="https://codesandbox.io/s/solution-m3-d1-react-introduction-cfu1-82td7?file=/src/App.js" target="_blank" rel="noopener noreferrer">Link</a></strong></p>
+  <h4 class="raw"></h4>
+  </details> <p></p>
+  <p></p>
+  </section><section id="Summary"><h2 class="raw">Summary</h2>
+  <p>In this lesson, we explained what frameworks are and how React can help us to create robust, scalable, and well-organized front-end apps. We successfully created our first React component and also abstracted existing React app content into components.</p>
+  <p>As you have seen, creating a component in React is as simple as creating a function. The only difference is that we are returning JSX content.</p>
+  <p>Now, let’s move forward! <img class="emoji" alt=":muscle:" src="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/images/basic/muscle.png"></p>
+  <p></p>
+  </section>
+  <section id="Extra-Resources"><h2 class="raw">Extra Resources</h2>
+  <p></p>
+  <ul>
+  <li class="raw"><a href="https://hellodarwin.com/blog/different-web-apps" target="_blank" rel="noopener noreferrer">What are the different types of web apps? (hellodarwin.com)</a></li>
+  <li class="raw"><a href="https://www.idtech.com/blog/what-are-libraries-in-coding" target="_blank" rel="noopener noreferrer">What are libraries in programming?</a></li>
+  <li class="raw"><a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React - Official Documentation</a></li>
+  <li class="raw"><a href="https://medium.com/@NeotericEU/single-page-application-vs-multiple-page-application-2591588efe58" target="_blank" rel="noopener noreferrer">Single-page application vs. multiple-page application</a></li>
+  <li class="raw"><a href="https://javascript.info/import-export" target="_blank" rel="noopener noreferrer">Modules Export and Import (javascript.info)</a></li>
+  </ul>
+  <p></p></section>
+  

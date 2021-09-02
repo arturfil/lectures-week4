@@ -1,0 +1,23 @@
+[
+  {
+    "name":"Green Goblin",
+    "color":"Green",
+    "rival": "Spiderman"
+  },
+  {
+    "name":"Thanos",
+    "color":"Purple",
+    "rival": "Avengers"
+  },
+  {
+    "name":"Kang The Conqueror",
+    "color":"Redish",
+    "rival": "Avengers"
+  },
+  {
+    "name":"Loki",
+    "color":"Green",
+    "rival": "Himself"
+  }
+
+]

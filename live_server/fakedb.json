@@ -1,0 +1,42 @@
+{
+  "user1": {
+    "name": "Arturo",
+    "age": 29,
+    "guitars": [
+      "gibson",
+      "stratocaster"
+    ]
+  },
+  "user2": {
+    "name": "Arturo",
+    "age": 29,
+    "guitars": [
+      "gibson",
+      "stratocaster"
+    ]
+  },
+  "user3": {
+    "name": "Arturo",
+    "age": 29,
+    "guitars": [
+      "gibson",
+      "stratocaster"
+    ]
+  },
+  "user4": {
+    "name": "Arturo",
+    "age": 29,
+    "guitars": [
+      "gibson",
+      "stratocaster"
+    ]
+  },
+  "user6": {
+    "name": "Arturo",
+    "age": 29,
+    "guitars": [
+      "gibson",
+      "stratocaster"
+    ]
+  }
+}

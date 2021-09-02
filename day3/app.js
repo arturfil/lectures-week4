@@ -1,29 +1,74 @@
-const express = require('express');
-const app = express();
+// database - aaexports
+//---------------------------
+// -- Collection - products
+//
+// -- Collection - Categories
 
-// database
+// CRUD MONGO SHELL Operations
 
-// middlewares
-app.set("views", __dirname + "/views");
-app.set("view engine", "hbs");
+// insert()  | C
+// find()    | R
+// update()  | U
+// delete()  | D
 
-// routes
-app.get('/', (req, res) => {
-  let data = {
-    name: "Arturo",
-    // lastName: "Filio",
-    cities: ["Amsterdam", "Barcelona", "Berlin", "Lisbon", "Madrid", "Mexico City", "Miami", "Paris", "Sao Paulo"],
-    bootcamp: "Web Dev Iron Hack",
-    address: {
-      street: "The number of the beast",
-      number: 666
-    },
-  }
-  res.render("index.hbs", data)
-})
+// show dbs
 
-// listen
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server started listening...`);
-})
+// use mavel_heroes
+
+db.heroes.insert({
+  name: "Ironman",
+  superpowers: ["rich", "filanthropist", "genious", "playboy"],
+  secretName: "Tony Stark",
+  significantOther: "Pepper Pots",
+});
+
+db.heroes.insert({
+  name: "Spiderman",
+  superpowers: [
+    "spider-sence",
+    "spider-webs",
+    "super-strength",
+    "increased agility",
+    "climb walls",
+  ],
+  secretName: "Peter Parker",
+  significantOther: "Mary Jane",
+});
+
+db.heroes.insert({
+  name: "Doctor Strange",
+  superpowers: ["magic-cape", "rings of destiny"],
+  secretName: "Steven Strange",
+  significantOther: "Rachel McAdams",
+});
+
+db.heroes.insertMany([
+  {
+    name: "Thor",
+    superpowers: ["hammer", "lightning strike"],
+    secretName: "Thor",
+    significantOther: "Natalie Portman",
+  },
+  {
+    name: "Hulk",
+    superpowers: ["anger", "super strenght", "fast healing"],
+    secretName: "Bruce Banner",
+    significantOther: "Black Widow",
+  },
+]);
+
+db.heroes.find().pretty();
+
+db.heroes.find({"name": {$eq: "Spiderman"}}).pretty();
+
+db.heroes.updateOne({_id: ObjectId("612fd924043c0f58b5d78a58")}, {$set: {"name": "Dr Strange"}});
+
+db.heroes.deleteOne({_id: ObjectId("612fd924043c0f58b5d78a58")});
+
+// -------------------------------------------------------------------
+db.movies
+  .find({"year": {$eq: "1999"}},{"title":1})
+  .sort({"title": 1});
+  
+
+db.companies.find({}, {}).sort()
