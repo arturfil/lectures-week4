@@ -4,7 +4,7 @@ const VillainSchema = Schema(
   {
     name: String,
     weakness: String,
-    heroEnemy: Schema.Types.ObjectId,
+    heroEnemy: {type: Schema.Types.ObjectId, ref: 'Heroe'},
     alive: {type: Boolean, default: true}
   }
 )
